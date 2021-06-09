@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { QuestModal } from '../components/Modal'
 import { Header } from '../components/Header'
+import { Question } from '../components/Question'
 
 const useHome = makeStyles({
   container: {
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className={container}>
       <Header func={toggleModal} />
+      <Question />
       <QuestModal isOpen={isModalOpen} />
     </div>
   );
