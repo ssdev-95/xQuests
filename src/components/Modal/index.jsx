@@ -1,25 +1,39 @@
-import React from 'react'
+import React from "react";
 
-import { Modal } from '@material-ui/core'
+import { Modal, Button } from "@material-ui/core";
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from "@material-ui/core/styles";
+import { DoubleArrow } from "@material-ui/icons";
 
 const useModal = makeStyles({
-    modal: {
-        background: 'red',
-        height: '15rem',
-        width: '15rem',
-        borderRadius: '4px',
-        zIndex: '66'
-    }
-})
+  modal: {
+    height: "15rem",
+    width: "15rem",
+    borderRadius: "4px",
+    zIndex: "999",
+    margin: "auto",
+    background: "#f0f2f5",
+    display: "flex",
+  },
+  icon: {
+      background: 'green'
+  }
+});
 
-export const QuestModal = ({isOpen}) => {
-    const { modal } = useModal()
+export const QuestModal = ({ isOpen }) => {
+  const { modal, icon } = useModal();
 
-    return (
-        <Modal open={isOpen} className={modal} >
-            <h1>lmao</h1>
-        </Modal>
-    )
-}
+  return (
+    <Modal open={isOpen} className={modal}>
+      <div>
+        <Button>
+          <DoubleArrow className={icon} />
+        </Button>
+        <input type="number" />
+        <Button>
+          <DoubleArrow className={icon} />
+        </Button>
+      </div>
+    </Modal>
+  );
+};

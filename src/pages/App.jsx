@@ -14,7 +14,7 @@ const useHome = makeStyles({
 
 function App() {
   const { container } = useHome()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(true)
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen)
