@@ -44,6 +44,6 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 The project will open in [http://localhost:3000](http://localhost:3000) on the browser.
 
-### For a first look, reach at it [here]().
+### For a first look, reach at it [here](https://x-quests.vercel.app).
 
 ### xSallus&trade; - 2021
