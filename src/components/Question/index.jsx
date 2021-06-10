@@ -4,269 +4,71 @@ import { Card } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const useQuestion = makeStyles({
+import useQuestions from "../../contexts/QuestionsContext";
+
+const useQuestionStyles = makeStyles({
   container: {
-      height: '100%',
-      width: '100%',
-      padding: '2rem 0',
-      overflowY: 'scroll',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '1.5rem'
+    height: "100%",
+    width: "100%",
+    padding: "1rem 0",
+    overflowY: "scroll"
   },
   card: {
     height: "18rem",
     width: "36rem",
-    maxWidth: '90%',
-    padding: "5rem 2rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    h3: {
-      color: "red",
-    },
+    maxWidth: "90%",
+    margin: "1rem auto 0",
+    padding: "3rem 2rem"
   },
   form: {
     height: "100%",
     width: "100%",
     display: "flex",
+    marginTop: '.45rem',
     flexDirection: "column",
     alignItems: "flex-start",
-    justifyContent: "space-evenly",
+    justifyContent: "stretch",
+    gap: ".8rem"
   },
   option: {
     display: "flex",
     gap: "1rem",
     alignItems: "center",
-  },
-  label: {
     cursor: "pointer",
+    fontSize: "1rem"
+  },
+  heading: {
+    fontWeight: 500,
+    fontSize: "1.1rem"
   },
 });
 
 export const Question = () => {
-  const { card, form, option, label, container } = useQuestion();
+  const { card, form, option, heading, container } = useQuestionStyles();
+
+  const { questions } = useQuestions();
 
   return (
     <div className={container}>
-      <Card className={card}>
-        <h3>{"1) How many hours takes a Day?"}</h3>
-        <form className={form}>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="36"
-              name="option"
-              id="option-one"
-            />
-            <label className={label} htmlFor="option-one">
-              36 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="24"
-              name="option"
-              id="option-two"
-            />
-            <label className={label} htmlFor="option-two">
-              24 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="12"
-              name="option"
-              id="option-three"
-            />
-            <label className={label} htmlFor="option-three">
-              12 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="48"
-              name="option"
-              id="option-four"
-            />
-            <label className={label} htmlFor="option-four">
-              48 hours
-            </label>
-          </div>
-        </form>
-      </Card>
-
-      <Card className={card}>
-        <h3>{"2) How many hours takes a Day?"}</h3>
-        <form className={form}>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="36"
-              name="option"
-              id="option-one"
-            />
-            <label className={label} htmlFor="option-one">
-              36 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="24"
-              name="option"
-              id="option-two"
-            />
-            <label className={label} htmlFor="option-two">
-              24 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="12"
-              name="option"
-              id="option-three"
-            />
-            <label className={label} htmlFor="option-three">
-              12 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="48"
-              name="option"
-              id="option-four"
-            />
-            <label className={label} htmlFor="option-four">
-              48 hours
-            </label>
-          </div>
-        </form>
-      </Card>
-
-      <Card className={card}>
-        <h3>{"1) How many hours takes a Day?"}</h3>
-        <form className={form}>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="36"
-              name="option"
-              id="option-one"
-            />
-            <label className={label} htmlFor="option-one">
-              36 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="24"
-              name="option"
-              id="option-two"
-            />
-            <label className={label} htmlFor="option-two">
-              24 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="12"
-              name="option"
-              id="option-three"
-            />
-            <label className={label} htmlFor="option-three">
-              12 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="48"
-              name="option"
-              id="option-four"
-            />
-            <label className={label} htmlFor="option-four">
-              48 hours
-            </label>
-          </div>
-        </form>
-      </Card>
-
-      <Card className={card}>
-        <h3>{"2) How many hours takes a Day?"}</h3>
-        <form className={form}>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="36"
-              name="option"
-              id="option-one"
-            />
-            <label className={label} htmlFor="option-one">
-              36 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="24"
-              name="option"
-              id="option-two"
-            />
-            <label className={label} htmlFor="option-two">
-              24 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="12"
-              name="option"
-              id="option-three"
-            />
-            <label className={label} htmlFor="option-three">
-              12 hours
-            </label>
-          </div>
-          <div className={option}>
-            <input
-              className={label}
-              type="radio"
-              value="48"
-              name="option"
-              id="option-four"
-            />
-            <label className={label} htmlFor="option-four">
-              48 hours
-            </label>
-          </div>
-        </form>
-      </Card>
-    
+      {questions.map((quest, index) => (
+        <Card key={quest.question.split(" ").join("")} className={card}>
+          <h3 className={heading}>{`${index+1}) ${quest.question}`}</h3>
+          <form className={form}>{
+            quest.answers.map((answer, index)=>(
+              <label key={`${answer}${index+100*4}`} className={option} htmlFor={`option-${index}`}>
+                <input
+                  className={""}
+                  type="radio"
+                  value={answer}
+                  name="option"
+                  id={`option-${index}`}
+                />
+                {answer}
+              </label>
+            ))
+          }</form>
+        </Card>
+      ))}
     </div>
   );
 };
