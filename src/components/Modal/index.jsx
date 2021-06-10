@@ -5,7 +5,10 @@ import { Modal, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { DoubleArrow } from "@material-ui/icons";
 
-const useModal = makeStyles({
+import useModal from '../../contexts/ModalContext'
+import useQuestions from "../../contexts/QuestionsContext";
+
+const useModalStyle = makeStyles({
   modal: {
     height: "15rem",
     width: "15rem",
@@ -47,22 +50,46 @@ const useModal = makeStyles({
 });
 
 export const QuestModal = ({ isOpen }) => {
-  const { modal, icon, container, input, submit } = useModal();
+  const { modal, icon, container, input, submit } = useModalStyle();
+  const { selectQuestionsQuantity, questionsQuantity } = useModal();
+  const { mountQuestions } = useQuestions();
+
+  const handleUpDown = (how) => {
+    if(String(how)==='up') {
+      const howMuch = (questionsQuantity<=99) ? (questionsQuantity+1) : 99
+      selectQuestionsQuantity(howMuch)
+    }
+
+    if(String(how)==='down'){
+      const howMany = (questionsQuantity>0) ? (questionsQuantity-1) : 0
+      selectQuestionsQuantity(howMany)
+    }
+  }
 
   return (
     <Modal open={isOpen} className={modal}>
       <div className={container}>
-        <Button>
+        <Button
+          onClick={()=>handleUpDown('down')}
+        >
           <DoubleArrow
             className={icon}
             style={{ transform: "rotate(180deg)" }}
           />
         </Button>
-        <input className={input} max="99" type="number" />
-        <Button>
+        <input
+           className={input}
+           type="number"
+           value={questionsQuantity} />
+        <Button
+          onClick={()=>handleUpDown('up')}
+        >
           <DoubleArrow className={icon} />
         </Button>
-      <Button className={submit}>Init</Button>
+      <Button
+        className={submit}
+        onClick={mountQuestions}
+      >Init</Button>
       </div>
     </Modal>
   );
