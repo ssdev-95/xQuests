@@ -15,7 +15,10 @@ export const ModalProvider = ({children}) => {
     }
 
     useEffect(()=>{
-        toggleModal()
+        const hasQuestions = (JSON.parse(localStorage.getItem('questions'))).length>0
+        if(!hasQuestions) {
+            toggleModal()
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

@@ -80,7 +80,8 @@ export const QuestModal = ({ isOpen }) => {
         <input
            className={input}
            type="number"
-           value={questionsQuantity} />
+           value={questionsQuantity}
+        />
         <Button
           onClick={()=>handleUpDown('up')}
         >
