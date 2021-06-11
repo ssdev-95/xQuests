@@ -3,18 +3,24 @@ import ReactDOM from "react-dom";
 import App from "./pages/App";
 import reportWebVitals from "./reportWebVitals";
 
-import { ModalProvider } from "./contexts/ModalContext";
+import { SelectQuestModalProvider } from "./contexts/SelectQuestModalContext";
+import { FinishedQuizProvider } from "./contexts/FinishedQuizContext";
 import { QuestionsProvider } from "./contexts/QuestionsContext";
+import { UserProvider } from "./contexts/UserContext";
 
 import "./styles/globals.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
+    <SelectQuestModalProvider>
       <QuestionsProvider>
-        <App />
+        <UserProvider>
+          <FinishedQuizProvider>
+            <App />
+          </FinishedQuizProvider>
+        </UserProvider>
       </QuestionsProvider>
-    </ModalProvider>
+    </SelectQuestModalProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

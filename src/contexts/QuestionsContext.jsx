@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import useModal from './ModalContext'
+import useModal from './SelectQuestModalContext'
 
 import axios from 'axios'
 
@@ -30,7 +29,8 @@ export const QuestionsProvider = ({children}) => {
             difficulty: res.difficulty,
             question: res.question,
             answers: [res.correct_answer, ...res.incorrect_answers],
-            correct_answer: 0
+            correct_answer: 0,
+            amount: 10
         }))
 
         setQuestions(quests)
