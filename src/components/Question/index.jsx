@@ -1,8 +1,11 @@
 import React from "react";
+import { Form, Formik } from 'formik'
 
 import { Card } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
+
+import { Radio } from '../Radio'
 
 import useQuestions from "../../contexts/QuestionsContext";
 
@@ -43,7 +46,7 @@ const useQuestionStyles = makeStyles({
   },
 });
 
-export const Question = () => {
+export const Question = ({ answers, func }) => {
   const { card, form, option, heading, container } = useQuestionStyles();
 
   const { questions } = useQuestions();
@@ -53,20 +56,25 @@ export const Question = () => {
       {questions.map((quest, index) => (
         <Card key={quest.question.split(" ").join("")} className={card}>
           <h3 className={heading}>{`${index+1}) ${quest.question}`}</h3>
-          <form className={form}>{
+          <Formik
+              onSubmit={(values, actions)=> {
+                console.log(values)
+                actions.setSubmitting(false)
+          }}>
+          <Form className={form}>{
             quest.answers.map((answer, index)=>(
-              <label key={`${answer}${index+100*4}`} className={option} htmlFor={`option-${index}`}>
-                <input
-                  className={""}
-                  type="radio"
-                  value={answer}
-                  name="option"
-                  id={`option-${index}`}
-                />
-                {answer}
-              </label>
+              <Radio
+                 key={`${answer}${index+100*4}`}
+                 class={option}
+                 index={questions.indexOf(quest)}
+                 answer={answer}
+                 id={index+4}
+                 func={func}
+                 results={answers}
+              />
             ))
-          }</form>
+          }</Form >
+          </Formik>
         </Card>
       ))}
     </div>

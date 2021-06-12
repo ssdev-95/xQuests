@@ -51,18 +51,18 @@ const useModalStyle = makeStyles({
   }
 });
 
-export const FinishedQuizModal = () => {
+export const FinishedQuizModal = ({quiz}) => {
   const { modal, container, actions, msg, icon } = useModalStyle();
-  const [finalizedQuiz, setFinalizedQuiz] = useState([])
+  
   const { 
     isFinishedQuizModalOpen,
     toggleFisnishedQuizModal,
     handleFinishedQuiz
   } = useFinishedQuiz()
 
-  const handleSubmit = (data) => {
-    // handleFinishedQuiz([...data, 'lol'])
-    console.log(data)
+  const handleSubmit = () => {
+    handleFinishedQuiz(quiz)
+    // console.log(quiz)
   }
 
   return (
@@ -71,8 +71,14 @@ export const FinishedQuizModal = () => {
         <ErrorOutlineIcon className={icon} />
         <h2 className={msg}>Really end this quiz?</h2>
         <div className={actions}>
-          <Button style={{background: 'red', color: "#f0f2f5"}} onClick={toggleFisnishedQuizModal}>Nope</Button>
-          <Button style={{background: 'green', color: "#f0f2f5"}} >Yes</Button>
+          <Button
+             style={{background: 'red', color: "#f0f2f5"}}
+             onClick={toggleFisnishedQuizModal}
+          >Nope</Button>
+          <Button
+             style={{background: 'green', color: "#f0f2f5"}}
+             onClick={handleSubmit}
+          >Yes</Button>
         </div>
       </div>
     </Modal>

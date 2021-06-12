@@ -1,13 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import useQuestions from "./QuestionsContext";
 import useProfile from "./UserContext";
 
 const FinishedQuizContext = createContext({});
 
 export const FinishedQuizProvider = ({ children }) => {
   const { user, updateUser } = useProfile();
-  const { quests } = useQuestions();
+  const quests = JSON.parse(localStorage.getItem('questions'))
 
   const [isFinishedQuizModalOpen, setIsFinishedQuizModalOpen] = useState(false)
   const [points, setPoints] = useState(0);
@@ -23,6 +23,7 @@ export const FinishedQuizProvider = ({ children }) => {
 
     quizAnswers.forEach((answer, index) => {
       const correctAnswer = quests[index].answers[quests[index].correct_answer];
+      // console.log(correctAnswer)
       if (answer === correctAnswer) {
         finalPoints += 10;
       }

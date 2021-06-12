@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import { makeStyles } from "@material-ui/core/styles";
@@ -38,12 +38,14 @@ function App() {
   const { isModalOpen, toggleModal } = useModal();
   const { toggleFisnishedQuizModal } = useFinishedQuiz();
 
+  const [results, setResults] = useState([]);
+
   return (
     <div className={container}>
       <Header func={toggleModal} />
-      <Question />
+      <Question answers={results} func={setResults} />
       <SelectQuestModal isOpen={isModalOpen} />
-      <FinishedQuizModal />
+      <FinishedQuizModal quiz={results} />
       <Button
          onClick={toggleFisnishedQuizModal}
          className={finishBtn}
